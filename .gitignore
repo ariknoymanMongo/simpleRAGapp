@@ -35,7 +35,8 @@ nohup.out
 *.tmp
 *.bak
 
-# Resources (keep structure but ignore large files)
+# Resources (keep structure but allow PDF)
 resources/*
 !resources/.gitkeep
+!resources/*.pdf
 

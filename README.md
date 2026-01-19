@@ -25,10 +25,21 @@ Create a `.env` file in the project root with your API keys:
 cp .env.example .env
 ```
 
-Edit `.env` and add your actual keys:
-- **MONGODB_URI**: Your MongoDB Atlas connection string
-- **VOYAGE_API_KEY**: Get from [voyageai.com](https://www.voyageai.com/)
-- **GEMINI_API_KEY**: Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
+Edit `.env` and add your actual keys. Here's the template:
+
+```env
+# MongoDB Atlas Connection String
+# Format: mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/
+
+# Voyage AI API Key (REQUIRED - for embeddings)
+# Get your key from: https://www.voyageai.com/
+VOYAGE_API_KEY=your-voyage-api-key-here
+
+# Google Gemini API Key (REQUIRED - for LLM in RAG)
+# Get your key from: https://makersuite.google.com/app/apikey
+GEMINI_API_KEY=your-gemini-api-key-here
+```
 
 **Note**: The `.env` file is already in `.gitignore` and won't be pushed to GitHub. Your keys are safe!
 
@@ -45,14 +56,17 @@ Edit `.env` and add your actual keys:
 
 ### Load PDF Data
 
-The script will automatically look for `resources/mongodb.pdf`. If you want to use a different PDF, edit `load_data.py` and change the `pdf_path` variable.
+**Note**: The PDF file (`resources/mongodb.pdf`) is not included in this repository due to size. You'll need to add your own PDF file to the `resources/` folder.
+
+1. Place your PDF file in the `resources/` folder (e.g., `resources/mongodb.pdf`)
+2. Run the load script:
 
 ```bash
 python load_data.py
 ```
 
-This will:
-1. Load the PDF from `resources/mongodb.pdf`
+The script will:
+1. Load the PDF from `resources/mongodb.pdf` (or edit `load_data.py` to use a different path)
 2. Extract and clean pages
 3. Chunk the content
 4. Generate embeddings using Voyage AI
