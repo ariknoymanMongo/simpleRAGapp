@@ -1,0 +1,20 @@
+{
+  "fields": [
+    {
+      "numDimensions": 1024,
+      "path": "embedding",
+      "quantization": "scalar",
+      "similarity": "dotProduct",
+      "type": "vector"
+    },
+    {
+      "path": "keywords",
+      "type": "filter"
+    },
+    {
+      "path": "hasCode",
+      "type": "filter"
+    }
+  ]
+}
+
