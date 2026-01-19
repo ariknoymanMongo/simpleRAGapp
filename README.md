@@ -41,25 +41,14 @@ VOYAGE_API_KEY=your-voyage-api-key-here
 GEMINI_API_KEY=your-gemini-api-key-here
 ```
 
-**Note**: The `.env` file is already in `.gitignore` and won't be pushed to GitHub. Your keys are safe!
-
-### 3. Create Vector Search Index
-
-1. Go to MongoDB Atlas → Your Cluster → Search
-2. Click "Create Search Index"
-3. Select "JSON Editor"
-4. Copy the contents of `atlas_vector_search_index.json`
-5. Set index name to: `vector_index`
-6. Create the index
 
 ## Usage
 
 ### Load PDF Data
 
-**Note**: The PDF file (`resources/mongodb.pdf`) is not included in this repository due to size. You'll need to add your own PDF file to the `resources/` folder.
+**Note**: The PDF file (`resources/mongodb.pdf`) is included in this repository.
 
-1. Place your PDF file in the `resources/` folder (e.g., `resources/mongodb.pdf`)
-2. Run the load script:
+1. Run the load script:
 
 ```bash
 python load_data.py
@@ -71,6 +60,17 @@ The script will:
 3. Chunk the content
 4. Generate embeddings using Voyage AI
 5. Store everything in MongoDB Atlas
+
+
+###  Create Vector Search Index
+
+1. Go to MongoDB Atlas → Your Cluster → Search
+2. Click "Create Search Index"
+3. Select "JSON Editor"
+4. Copy the contents of `atlas_vector_search_index.json`
+5. Set index name to: `vector_index`
+6. Create the index
+
 
 ### Test Retrieval
 
